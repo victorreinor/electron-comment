@@ -6,6 +6,7 @@ const {
   BrowserWindow,
   Menu,
   ipcMain,
+  Notification,
 } = electron;
 let mainWindow;
 let commentWindow;

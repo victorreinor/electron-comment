@@ -1,17 +1,33 @@
-<head></head>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <style>
+    body {
+      padding:10px;
+    }
+  </style>
+</head>
 
 <body>
   <form>
-    <div><label for="">Digite seu comentário no campo abaixo:</label></div>
-    <div><input type="text" autofocus required></div>
-    <button type="submit">Enviar</button>
+    <div class="form-group">
+      <label>Seu nome:</label>
+      <input type="text">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Digite seu comentário:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Comentário..." autofocus required>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar comentário</button>
   </form>
   <script>
     const electron = require('electron');
     const { ipcRenderer } = electron;
 
     document.querySelector('form').addEventListener('submit', (event) => {
+      
       event.preventDefault();
+      
       const { value } = document.querySelector('input');
 
       ipcRenderer.send('addComment', value);
